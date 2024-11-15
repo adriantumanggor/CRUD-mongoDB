@@ -8,17 +8,17 @@ export default function Home() {
     <div className="container mx-auto py-10">
       <Card className="max-w-md mx-auto">
         <CardHeader>
-          <CardTitle>CRUD NoSQL Using MongoDB</CardTitle>
-          <CardDescription>Enter user details below</CardDescription>
+          <CardTitle>Registrasi User</CardTitle>
+          <CardDescription>masukkan detail user</CardDescription>
         </CardHeader>
         <form>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">Nama</Label>
               <Input
                 id="name"
                 name="name"
-                placeholder="Enter name"
+                placeholder="Masukkan nama"
                 required
               />
             </div>
@@ -28,16 +28,16 @@ export default function Home() {
                 id="email"
                 name="email"
                 type="email"
-                placeholder="Enter email"
+                placeholder="Masukkan email"
                 required
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="phone">Phone</Label>
+              <Label htmlFor="phone">Nomor Telepon</Label>
               <Input
                 id="phone"
                 name="phone"
-                placeholder="Enter phone number"
+                placeholder="Masukkan nomor telepon"
                 required
               />
             </div>
