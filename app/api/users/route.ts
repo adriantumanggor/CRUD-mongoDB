@@ -10,26 +10,27 @@ export async function GET() {
     }
 }
 
-export async function DELETE(req: NextRequest) {
-    const searchParams = req.nextUrl.searchParams;
-    const id = searchParams.get("id");
-
-    if (!id) {
-        return NextResponse.json(
-            { error: "ID harus diisi" },
-            { status: 400 },
-        );
-    }
-
+export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
     try {
-        const users = await prisma.users.delete({
+        if (!params.id) {
+            return NextResponse.json(
+                { error: "ID harus diisi" },
+                { status: 400 },
+            );
+        }
+
+        const user = await prisma.users.delete({
             where: {
-                id: id,
+                id: params.id,
             },
         });
-        return NextResponse.json(users);
+        return NextResponse.json(user);
     } catch (error) {
-        return NextResponse.json({ error: error }, { status: 500 });
+        console.error('Error deleting user:', error);
+        return NextResponse.json(
+            { error: 'Failed to delete user' },
+            { status: 500 }
+        );
     }
 }
 
