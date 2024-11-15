@@ -8,9 +8,11 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
     const searchParams = req.nextUrl.searchParams;
-    const name = searchParams.get('name');
-    const email = searchParams.get('email');
-    const phone = searchParams.get('phone');
+    const name = searchParams.get("name");
+    const email = searchParams.get("email");
+    const phone = searchParams.get("phone");
+
+    console.log(name, email, phone);
 
     if(!name || !email || !phone) {
         return NextResponse.json(
@@ -32,6 +34,18 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(
             { error: error },
             { status: 500 }
+        )
+    }
+}
+
+export async function PUT(req: NextRequest, res: NextResponse) {
+    const searchParams = req.nextUrl.searchParams;
+    const id = searchParams.get("id");
+
+    if(!id) {
+        return NextResponse.json(
+            { error: "Id harus diisi" },
+            { status: 400 }
         )
     }
 }
